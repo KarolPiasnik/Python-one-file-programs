@@ -52,17 +52,24 @@ def printLoop(world):
     pygame.display.update()
     
 def introLoop(world):
-
-    for event in pygame.event.get(): #event handling loop
-            if event.type == pygame.QUIT:
-                gameQuit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_q:
+    while(True):
+        for event in pygame.event.get(): #event handling loop
+                if event.type == pygame.QUIT:
                     gameQuit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_q:
+                        gameQuit()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        print('x')
+                    else:
+                        print('y')
         pygame.event.clear()
+        printLoop(world)
+        clock.tick(10)
                     
-    world = deepcopy(world2)
-    printLoop(world)
+    
+    
 
 def mainLoop(world):
     
