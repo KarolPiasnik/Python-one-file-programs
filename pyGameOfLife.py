@@ -56,11 +56,11 @@ def mainLoop(world):
      for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 gameQuit()
-##            elif event.type == pygame.KEYDOWN:
-##                if event.key == pygame.K_p:
-##                    gamePause()
-##                elif event.key == pygame.K_o:
-##                    gameOptions()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    gameQuit()
+                #elif event.key == pygame.K_o:
+                    #gameOptions()
                     
     count = 0;
     while(True):
