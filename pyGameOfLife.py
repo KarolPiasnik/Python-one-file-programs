@@ -66,7 +66,7 @@ def introLoop(world):
                     if event.button == 1:
                         world[(pos[1]//(height//rows))][(pos[0]//(width//columns))] = True
                     else:
-                        world[pos[0]//(width//columns)][pos[1]//(height//rows)] = False
+                        world[(pos[1]//(height//rows))][(pos[0]//(width//columns))] = False
         pygame.event.clear()
         printLoop(world)
         clock.tick(10)
