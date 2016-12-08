@@ -64,8 +64,6 @@ def introLoop(world):
                         running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.mouse.get_pos()
-                    print(pos)
-                    print(columns-(pos[0]//(width//columns)))
                     if event.button == 1:
                         world[(pos[1]//(height//rows))][(pos[0]//(width//columns))] = True
                     else:
@@ -120,4 +118,4 @@ def mainLoop(world):
 
 
 introLoop(world)
-
+mainLoop(world)
