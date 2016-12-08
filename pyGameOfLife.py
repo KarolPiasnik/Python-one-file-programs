@@ -64,9 +64,11 @@ def mainLoop(world):
             elif event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_q:
                     gameQuit()
-                elif event.key == pygame.K_PLUS and speed < 120:
+                if event.key == pygame.K_p and speed < 120:
+                    print('lel')
                     speed+=1
-                elif event.key == pygame.K_MINUS and speed > 0:
+                if event.key == pygame.K_o and speed > 1:
+                    print('lel')
                     speed-=1
         pygame.event.clear()
     
