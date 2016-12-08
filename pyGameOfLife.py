@@ -60,10 +60,13 @@ def introLoop(world):
                     if event.key == pygame.K_q:
                         gameQuit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
+                    pos = pygame.mouse.get_pos()
+                    print(pos)
+                    print(columns-(pos[0]//(width//columns)))
                     if event.button == 1:
-                        print('x')
+                        world[(pos[1]//(height//rows))][(pos[0]//(width//columns))] = True
                     else:
-                        print('y')
+                        world[pos[0]//(width//columns)][pos[1]//(height//rows)] = False
         pygame.event.clear()
         printLoop(world)
         clock.tick(10)
@@ -114,3 +117,4 @@ def mainLoop(world):
 
 
 introLoop(world)
+
