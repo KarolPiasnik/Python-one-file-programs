@@ -52,7 +52,8 @@ def printLoop(world):
     pygame.display.update()
     
 def introLoop(world):
-    while(True):
+    running = True
+    while(running):
         for event in pygame.event.get(): #event handling loop
                 if event.type == pygame.QUIT:
                     gameQuit()
@@ -60,7 +61,7 @@ def introLoop(world):
                     if event.key == pygame.K_q:
                         gameQuit()
                     elif event.key == pygame.K_s:
-                        break
+                        running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.mouse.get_pos()
                     print(pos)
