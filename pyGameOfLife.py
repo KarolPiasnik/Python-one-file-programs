@@ -16,8 +16,8 @@ black = (0,0,0)
 white = (255,255,255)
 
 
-rows = 40
-columns = 40
+rows = 100
+columns = 100
 world = np.ndarray((rows,columns))
 
 
@@ -51,11 +51,22 @@ def printLoop(world):
     
     pygame.display.update()
     
-        
-def mainLoop(world):
-    speed = 15 #default framerate
-    
+def introLoop(world):
 
+    for event in pygame.event.get(): #event handling loop
+            if event.type == pygame.QUIT:
+                gameQuit()
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_q:
+                    gameQuit()
+        pygame.event.clear()
+                    
+    world = deepcopy(world2)
+    printLoop(world)
+
+def mainLoop(world):
+    
+    speed = 15 #default framerate
     count = 0;#counter of neighbours
     while(True):
         for event in pygame.event.get(): #event handling loop
@@ -65,10 +76,8 @@ def mainLoop(world):
                 if event.key == pygame.K_q:
                     gameQuit()
                 if event.key == pygame.K_p and speed < 120:
-                    print('lel')
                     speed+=1
                 if event.key == pygame.K_o and speed > 1:
-                    print('lel')
                     speed-=1
         pygame.event.clear()
     
@@ -97,4 +106,4 @@ def mainLoop(world):
         
 
 
-mainLoop(world)
+introLoop(world)
