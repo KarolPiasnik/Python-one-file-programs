@@ -53,16 +53,19 @@ def printLoop(world):
     
         
 def mainLoop(world):
-     for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+    speed = 15 #default framerate
+    for event in pygame.event.get(): #event handling loop
+        if event.type == pygame.QUIT:
+            gameQuit()
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_q:
                 gameQuit()
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_q:
-                    gameQuit()
-                #elif event.key == pygame.K_o:
-                    #gameOptions()
-                    
-    count = 0;
+            elif event.key == pygame.K_PLUS:
+                speed+=1
+            elif event.key == pygame.K_PLUS:
+                speed-=1         
+
+    count = 0;#counter of neighbours
     while(True):
         for row in range(0,rows):
             for column in range(0,columns):
@@ -85,7 +88,7 @@ def mainLoop(world):
         
     
         printLoop(world)          
-        clock.tick(15)            
+        clock.tick(speed)            
         
 
 
