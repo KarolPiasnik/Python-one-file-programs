@@ -4,6 +4,14 @@ import threading
 from time import sleep
 import numpy as np
 from copy import deepcopy
+## s - start loop
+## q - quit
+## left mouse - live cell
+## other mouse - dead cell
+## WORKS ONLY AFTER START 
+## p - increase speed
+## o - decrease speed
+
 
 width = 800
 height = 800
