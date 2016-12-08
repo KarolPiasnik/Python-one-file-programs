@@ -37,6 +37,10 @@ world[10][15] = True
 
 world2 = deepcopy(world)
 
+def gameQuit():
+    pygame.quit()
+    quit()
+    
 def printLoop(world):
     gameDisplay.fill(white)
 
@@ -49,8 +53,17 @@ def printLoop(world):
     
         
 def mainLoop(world):
+     for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                gameQuit()
+##            elif event.type == pygame.KEYDOWN:
+##                if event.key == pygame.K_p:
+##                    gamePause()
+##                elif event.key == pygame.K_o:
+##                    gameOptions()
+                    
     count = 0;
-    for i in range(100):
+    while(True):
         for row in range(0,rows):
             for column in range(0,columns):
                 count = 0
