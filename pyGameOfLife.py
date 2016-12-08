@@ -59,6 +59,8 @@ def introLoop(world):
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
                         gameQuit()
+                    elif event.key == pygame.K_s:
+                        break
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     pos = pygame.mouse.get_pos()
                     print(pos)
