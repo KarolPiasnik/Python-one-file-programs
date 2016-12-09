@@ -32,8 +32,18 @@ def mainLoop():
                         imageDisplay.set_at((count%width, count//height), white)
                         count+=1
 
+        keys = pygame.key.get_pressed()  #checking pressed keys
+        if keys[pygame.K_0]:
+            for i in range(size):
+                imageDisplay.set_at((count%width, count//height), black)
+                count+=1
+        if keys[pygame.K_1]:
+            for i in range(size):
+                imageDisplay.set_at((count%width, count//height), white)
+                count+=1
+
         pygame.display.update()
-        clock.tick(10)
+        clock.tick(30)
 
 
 
