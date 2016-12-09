@@ -16,6 +16,7 @@ imageDisplay.fill(white)
 
 def mainLoop():
     count = 0 #pixel counter
+    size = 10
 
     while(True):
         for event in pygame.event.get():
@@ -23,11 +24,13 @@ def mainLoop():
                 pygame.quit()
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_0:
-                    imageDisplay.set_at((count%width, count//height), black)
-                    count+=1
+                    for i in range(size):
+                        imageDisplay.set_at((count%width, count//height), black)
+                        count+=1
                 elif event.key == pygame.K_1:
-                    imageDisplay.set_at((count%width, count//height), white)
-                    count+=1
+                    for i in range(size):
+                        imageDisplay.set_at((count%width, count//height), white)
+                        count+=1
 
         pygame.display.update()
         clock.tick(10)
