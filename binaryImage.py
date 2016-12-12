@@ -13,14 +13,15 @@ black = (0,0,0)
 white = (255,255,255)
 imageDisplay.fill((155,155,155))
 
-content = open('image.txt', 'r').read()
-count = 0 # needed to calculate where to draw
-for char in content:
-    if char == '1':
-        pygame.draw.rect(imageDisplay,white,(count%(width//size)*size, count//(width//size)*size, size, size))
-    elif char == '0':
-        pygame.draw.rect(imageDisplay,black,(count%(width//size)*size, count//(width//size)*size, size, size))
-    count += 1
+def makeImage():
+    content = open('image.txt', 'r').read()
+    count = 0 # needed to calculate where to draw
+    for char in content:
+        if char == '1':
+            pygame.draw.rect(imageDisplay,white,(count%(width//size)*size, count//(width//size)*size, size, size))
+        elif char == '0':
+            pygame.draw.rect(imageDisplay,black,(count%(width//size)*size, count//(width//size)*size, size, size))
+        count += 1
 
 def introLoop():
     while(True):
@@ -30,6 +31,6 @@ def introLoop():
         pygame.display.update()
         clock.tick(10)
                     
-
+makeImage()
 introLoop()    
 
