@@ -12,11 +12,12 @@ size = 10 # size of units to be drawn
 black = (0,0,0)
 white = (255,255,255)
 imageDisplay.fill((155,155,155))
+content = open('image.txt', 'r').read()
 
-def makeImage():
-    content = open('image.txt', 'r').read()
+
+def makeImageWB(): #print image white and black
     count = 0 # needed to calculate where to draw
-    for char in content:
+    for char in content[1:]:
         if char == '1':
             pygame.draw.rect(imageDisplay,white,(count%(width//size)*size, count//(width//size)*size, size, size))
         elif char == '0':
@@ -30,7 +31,7 @@ def introLoop():
                     pygame.quit()
         pygame.display.update()
         clock.tick(10)
-                    
-makeImage()
+if content[0] == '1':                  
+    makeImageWB()
 introLoop()    
 
