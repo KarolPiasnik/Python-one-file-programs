@@ -35,14 +35,13 @@ def makeImage8Color(): #print image white and black
     color = 0
     count = 0 # needed to calculate where to draw
     for char in content[1:]:
-        if count % 3 == 2:
-                count -= 2
-                pygame.draw.rect(imageDisplay,colors[color],(count%(width//size)*size, count//(width//size)*size, size, size))
-                color = 0
-        else:
+        if char == '1':
             color += 2**(count%3)
-            
         count += 1
+        if count % 3 == 2:
+                pygame.draw.rect(imageDisplay,colors[color],((count//3)%(width//size)*size, (count//3)//(width//size)*size, size, size))
+                color = 0
+        
 
 def introLoop():
     while(True):
