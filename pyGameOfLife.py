@@ -64,7 +64,7 @@ def introLoop(world):
     while(running):
         for event in pygame.event.get(): #event handling loop
                 if event.type == pygame.QUIT:
-                    gameQuit()
+                    pygame.quit()
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
                         gameQuit()
