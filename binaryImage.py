@@ -8,7 +8,7 @@ pygame.display.set_caption("Binary Image")
 clock = pygame.time.Clock()
 pygame.init()
 
-size = 10 # size of units to be drawn
+size = 3 # size of units to be drawn
 black = (0,0,0)
 white = (255,255,255)
 red = (255,0,0)
@@ -18,6 +18,7 @@ yellow = (255,255,0)
 magenta = (255,0,255)
 cyan = (0,255,255)
 colors = [black,white,red,green,blue,yellow,magenta,cyan]
+
 imageDisplay.fill((155,155,155))
 content = open('image.txt', 'r').read()
 
@@ -34,7 +35,7 @@ def makeImageWB(): #print image white and black
 def makeImage8Color(): #print image in 8 colors
     color = 0
     count = 0 # needed to calculate where to draw
-    for char in content[2:]:
+    for char in content[2:]: #this condition is responsible for reading colors from file
         if char == '1':
             color += 2**(count%3)
         count += 1
@@ -47,9 +48,9 @@ def makeImageRGB(): #print image in 8 colors
     rgb = [0,0,0]
     color = 0
     count = 0 # needed to calculate where to draw
-    for char in content[2:]:
+    for char in content[2:]: #this condition is responsible for reading colors from file
         if char == '1':
-            rgb[(count % 24) // 8] += 2**(count%8)
+            rgb[(count % 24) // 8] += 2**(count%8) #first eight chars are red, then ble,green
         
         count += 1
         if count % 24 == 23:
@@ -58,19 +59,22 @@ def makeImageRGB(): #print image in 8 colors
  
 
                 
-def introLoop():
+def mainLoop():
     while(True):
         for event in pygame.event.get(): #event handling loop
                 if event.type == pygame.QUIT:
                     pygame.quit()
         pygame.display.update()
         clock.tick(10)
+        
 if content[0] == '0' and content[1] == '0' :                  
     makeImageWB()
 elif content[0] == '1' and content[1] == '0':
     makeImage8Color()
 elif content[0] == '1' and content[1] == '1':
     makeImageRGB()
+else:
+    pass
 
-introLoop()    
+mainLoop()    
 
