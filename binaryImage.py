@@ -57,24 +57,35 @@ def makeImageRGB(): #print image in 8 colors
                 pygame.draw.rect(imageDisplay,(rgb[0],rgb[1],rgb[2]),((count//24)%(width//size)*size, (count//24)//(width//size)*size, size, size))
                 rgb = [0,0,0]
  
-
+def drawImage():
+    imageDisplay.fill((155,155,155))
+    if content[0] == '0' and content[1] == '0' :                  
+        makeImageWB()
+    elif content[0] == '1' and content[1] == '0':
+        makeImage8Color()
+    elif content[0] == '1' and content[1] == '1':
+        makeImageRGB()
+    else:
+        pass
                 
 def mainLoop():
+    global size
     while(True):
         for event in pygame.event.get(): #event handling loop
                 if event.type == pygame.QUIT:
                     pygame.quit()
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_p:
+                        size += 1
+                        drawImage()
+                    elif event.key == pygame.K_o and size > 2:
+                        size -= 1
+                        drawImage()
+                    
         pygame.display.update()
         clock.tick(10)
         
-if content[0] == '0' and content[1] == '0' :                  
-    makeImageWB()
-elif content[0] == '1' and content[1] == '0':
-    makeImage8Color()
-elif content[0] == '1' and content[1] == '1':
-    makeImageRGB()
-else:
-    pass
 
+drawImage()
 mainLoop()    
 
